@@ -1,0 +1,12 @@
+const router = require('koa-router')()
+const loginController = require('./admin/loginController')
+const loginPostController = require('./admin/loginPostController')
+const indexController = require('./admin/indexController')
+const logoutController = require('./admin/logoutController')
+const navController = require('./admin/navController')
+router.get('/admin',loginController)
+router.post('/admin',loginPostController)
+router.get('/admin/index',indexController)
+router.get('/admin/logout',logoutController)
+router.get('/admin/nav',navController)
+module.exports = router
