@@ -1,7 +1,11 @@
-const mysql = require('../../config/mysql')
+const getNavList = require('../../model/getNavList')
 
 module.exports = async (ctx) => {
-
-
-    await ctx.render('main/index')
+    let navList = null
+    await getNavList(function (data) {
+        navList = data
+    })
+    await ctx.render('main/index', {
+        navList
+    })
 }

@@ -27,7 +27,7 @@ const CONFIG = {
     /** (number || 'session') maxAge in ms (default is 1 days) */
     /** 'session' will result in a cookie that expires when session/browser is closed */
     /** Warning: If a session cookie is stolen, this cookie will never expire */
-    maxAge: 10000000,
+    maxAge: 1000000,
     autoCommit: true, /** (boolean) automatically commit headers (default true) */
     overwrite: true, /** (boolean) can overwrite or not (default true) */
     httpOnly: true, /** (boolean) httpOnly or not (default true) */
@@ -52,6 +52,21 @@ render(app, {
 
 
 // routes
+//session拦截
+
+app.use(async (ctx, next) => {
+    const allowpage = ['/admin']
+    if (allowpage.includes(ctx.originalUrl)) {
+
+    } else if (ctx.originalUrl.startsWith('/admin/')){
+        if (ctx.session.isAdmin == null || ctx.session.isAdmin == undefined) {
+            ctx.redirect('/admin')
+            return
+        }
+    }
+
+    await next()
+})
 app.use(main.routes(), main.allowedMethods())
 // app.use(api.routes(), api.allowedMethods())
 app.use(admin.routes(), admin.allowedMethods())
@@ -71,6 +86,8 @@ app.use(async (ctx, next) => {
 // error-handling
 app.on('error', (err, ctx) => {
     console.error('server error', err, ctx)
-});
+})
+
+
 
 module.exports = app

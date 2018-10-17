@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{{block 'title'}}{{/block}}</title>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/base.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
+    <link href="css/m.css" rel="stylesheet">
+    <script src="js/jquery-2.1.1.min.js"></script>
+    <!--[if lt IE 9]>
+    <script src="js/modernizr.js"></script>
+    <![endif]-->
+    <script>
+        window.onload = function () {
+            var oH2 = document.getElementsByTagName("h2")[0];
+            var oUl = document.getElementsByTagName("ul")[0];
+            oH2.onclick = function () {
+                var style = oUl.style;
+                style.display = style.display == "block" ? "none" : "block";
+                oH2.className = style.display == "block" ? "open" : ""
+            }
+        }
+    </script>
+</head>
+<body>
+<header>
+    <div class="tophead">
+        <div class="logo"><a href="/">范义辉</a></div>
+        <div id="mnav">
+            <h2><span class="navicon"></span></h2>
+            <ul>
+                <%for(var i = 0;i < navList.length;i ++) {%>
+                <li><a href="<%=navList[i].nav_url%>"><%=navList[i].nav_name%></a></li>
+                <%}%>
+            </ul>
+        </div>
+        <nav class="topnav" id="topnav">
+            <ul>
+                <%for(var i = 0;i < navList.length;i ++) {%>
+                <li><a href="<%=navList[i].nav_url%>"><%=navList[i].nav_name%></a></li>
+                <%}%>
+            </ul>
+        </nav>
+    </div>
+</header>
+{{block 'content'}}{{/block}}
+<script src="js/nav.js"></script>
+{{block 'footer'}}{{/block}}
+</body>
+</html>
