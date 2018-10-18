@@ -29,7 +29,7 @@
                 <label for="tag">所属标签</label>
                 <input type="text" class="form-control" id="tag"  autocomplete="off">
             </div>
-            <input type="button" class="btn btn-primary" value="提交" style="width: 100%;"/>
+            <input type="button" class="btn btn-primary" value="提交" style="width: 100%;" id="sub"/>
             <a href="/admin/index" class="btn btn-primary" style="width: 100%;margin-top: 20px;">返回</a>
         </form>
     </div>
@@ -50,18 +50,30 @@
                 imageUploadURL: "/file/upload",
             });
             
-            $('.sub').on('click', function () {
+            $('#sub').on('click', function () {
                 var content = $('textarea').val()
-                console.log(content);
+                var title = $('#title').val()
+                var tag = $('#tag').val()
+                if (content == '' || title == '' || tag == '') {
+                    alert('输入不能为空')
+                    return
+                }
                 $.ajax({
                     url: '/admin/articleAddPost',
                     type: 'post',
                     data: {
-                        content: content
+                        content: content,
+                        title:title,
+                        tag:tag
                     },
                     dataType: 'json',
                     success: function (res) {
-                        console.log(res)
+                        if (res.success) {
+                            alert(res.message)
+                            location.href = '/admin/index'
+                        } else {
+                            alert(res.message)
+                        }
                     }
                 })
             })

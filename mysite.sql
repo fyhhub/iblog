@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80012
 File Encoding         : 65001
 
-Date: 2018-10-17 22:14:50
+Date: 2018-10-18 21:19:48
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -30,27 +30,27 @@ CREATE TABLE `admin` (
 -- ----------------------------
 -- Records of admin
 -- ----------------------------
-INSERT INTO `admin` VALUES ('1', 'admin', '123456', '2018-10-17  22:0:41');
+INSERT INTO `admin` VALUES ('1', 'admin', '123456', '2018-10-18  19:47:10');
 
 -- ----------------------------
 -- Table structure for article
 -- ----------------------------
 DROP TABLE IF EXISTS `article`;
 CREATE TABLE `article` (
-  `id` int(11) DEFAULT NULL,
+  `id` varchar(30) DEFAULT NULL,
   `article_author` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `article_tags` varchar(20) DEFAULT NULL,
-  `article_time` varchar(20) DEFAULT NULL,
+  `article_time` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `article_title` varchar(30) DEFAULT NULL,
   `article_read` smallint(6) DEFAULT NULL,
-  `article_url` varchar(20) DEFAULT NULL,
-  `article_check` bit(1) DEFAULT NULL
+  `article_url` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `article_check` varchar(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of article
 -- ----------------------------
-INSERT INTO `article` VALUES (null, null, '', null, null, null, '', '\0');
+INSERT INTO `article` VALUES ('1539868635418', 'admin', 'aasfasf', '2018-10-18  21:17:15', 'asfasf', '0', '.../../source/article/asfasf---1539868635418.md', '0');
 
 -- ----------------------------
 -- Table structure for nav
