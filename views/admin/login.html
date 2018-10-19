@@ -21,15 +21,8 @@
     <!-- css files -->
     <link rel="stylesheet" href="/css/loginstyle.css" type="text/css" media="all"/>
     <!-- Style-CSS -->
-    <link rel="stylesheet" href="/css/fontawesome-all.css">
-    <!-- Font-Awesome-Icons-CSS -->
-    <!-- //css files -->
-    <!-- web-fonts -->
-    <link href="http://maxcdn.bootstrapcdn.com/css?family=Josefin+Sans:100,100i,300,300i,400,400i,600,600i,700,700i"
-          rel="stylesheet">
-    <link href="http://maxcdn.bootstrapcdn.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i"
-          rel="stylesheet">
-    <!-- //web-fonts -->
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -47,18 +40,18 @@
 <div class="sub-main-w3">
     <form >
         <h2>Login Now
-            <i class="fas fa-level-down-alt"></i>
+
         </h2>
         <div class="form-style-agile">
             <label>
-                <i class="fas fa-user"></i>
+                <i class="fa fa-user-circle"></i>
                 账号
             </label>
             <input  type="text" required="" id="username" autocomplete="off">
         </div>
         <div class="form-style-agile">
             <label>
-                <i class="fas fa-unlock-alt"></i>
+                <i class="fa fa-key"></i>
                 密码
             </label>
             <input  type="password" required="" id="password">
@@ -77,7 +70,7 @@
 <script src="/js/canva_moving_effect.js"></script>
 <!-- //effect js -->
 <script>
-    $('#login').on('click', function (e) {
+    function handler () {
         var username = $('#username').val()
         var password = $('#password').val()
         $.ajax({
@@ -89,14 +82,20 @@
             },
             dataType: 'json',
             success: function (res) {
-               if (!res.valid) {
-                   alert(res.message)
-               } else {
-                   location.href = '/admin/index'
-               }
+                if (!res.valid) {
+                    alert(res.message)
+                } else {
+                    location.href = '/admin/index'
+                }
             }
         })
+    }
+    $(document).on('keydown' , function (e) {
+        if (e.keyCode == 13) {
+            handler ()
+        }
     })
+    $('#login').on('click' , handler)
 </script>
 </body>
 </html>

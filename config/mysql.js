@@ -4,7 +4,7 @@ var wrapper = require('co-mysql'),
 
 var pool = mysql.createPool({
     host : 'localhost',
-    port : 3306,
+    port : 3308,
     database : 'mysite',
     user: 'root',
     password : 'root'

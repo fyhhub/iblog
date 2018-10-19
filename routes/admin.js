@@ -12,19 +12,27 @@ const navUpdatePost = require('./admin/nav/navUpdatePost')
 const articleAdd = require('./admin/article/articleAdd')
 const articleAddPost = require('./admin/article/articleAddPost')
 const fileUpload = require('./admin/article/fileUpload')
+const articleCheck = require('./admin/article/articleCheck')
+// get
 router.get('/admin',loginController)
-router.post('/admin',loginPostController)
 router.get('/admin/index',indexController)
 router.get('/admin/logout',logoutController)
 router.get('/admin/nav',navController)
 router.get('/admin/navAdd',navAdd)
-router.post('/admin/navAddPost',navAddPost)
 router.get('/admin/navDel',navDel)
 router.get('/admin/navUpdate',navUpdate)
+router.get('/admin/articleAdd/:id',articleAdd)
+router.get('/admin/articleCheck',articleCheck)
+
+
+
+// post
 router.post('/admin/navUpdatePost',navUpdatePost)
-router.get('/admin/articleAdd',articleAdd)
+router.post('/admin/navAddPost',navAddPost)
+router.post('/admin',loginPostController)
 router.post('/admin/articleAddPost',articleAddPost)
 router.post('/file/upload',fileUpload)
+
 
 
 
