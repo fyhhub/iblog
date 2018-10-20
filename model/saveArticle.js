@@ -5,7 +5,7 @@ const resInfo = {
     message: ''
 }
 const saveArticle = async (acticleInfo) => {
-    await p.query(`insert into article values('${acticleInfo.id}', '${acticleInfo.article_author}', '${acticleInfo.article_tags}', '${acticleInfo.article_time}', '${acticleInfo.article_title}',${acticleInfo.article_read}, ${mysql.escape(acticleInfo.article_url)}, '${acticleInfo.article_check}')`)
+    await p.query(`insert into article values('${acticleInfo.id}', '${acticleInfo.article_author}', '${acticleInfo.article_tags}', '${acticleInfo.article_time}', '${acticleInfo.article_title}',${acticleInfo.article_read}, ${mysql.escape(acticleInfo.article_url)}, '${acticleInfo.article_check}', ${mysql.escape(acticleInfo.article_introduce_img)})`)
         .then((data) => {
             resInfo.success = true
             resInfo.message = '存入数据库成功'

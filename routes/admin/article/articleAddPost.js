@@ -11,7 +11,8 @@ const acticleInfo = {
     article_title: '',
     article_read: 0,
     article_url: '',
-    article_check: '0'
+    article_check: '0',
+    article_introduce_img: ''
 }
 module.exports = async (ctx) => {
     let {content, title, tag} = ctx.request.body
@@ -25,7 +26,6 @@ module.exports = async (ctx) => {
     acticleInfo.article_time = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + '  ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds()
     acticleInfo.article_tags = tag
     acticleInfo.article_title = title
-    console.log(__dirname);
     acticleInfo.article_url = path.join(__dirname, `./source/${title}---${acticleInfo.id}.md`)
     Info = await saveArticle(acticleInfo)
     if (Info.success) {

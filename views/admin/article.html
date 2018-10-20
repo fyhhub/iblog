@@ -45,11 +45,7 @@
                 syncScrolling : "single",
                 path    : "/editor/lib/",
                 saveHTMLToTextarea : true,
-                imageUpload : true,
-                imageFormats: ["jpg","jpeg","gif","png","bmp","webp"],
-                imageUploadURL: "/file/upload",
-            });
-            
+            })
             $('#sub').on('click', function () {
                 var content = $('textarea').val()
                 var title = $('#title').val()
@@ -70,7 +66,7 @@
                     success: function (res) {
                         if (res.success) {
                             alert(res.message)
-                            location.href = '/admin/index'
+                            location.href = '/admin/articleCheck'
                         } else {
                             alert(res.message)
                         }

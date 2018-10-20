@@ -1,7 +1,7 @@
 {{extend '../layout/adminLayout.html'}}
 {{block 'title'}}导航栏管理{{/block}}
 {{block 'content'}}
-<div class="col-sm-9 col-sm-offset-3 col-md-10 col-lg-10 col-md-offset-2 main" id="main">
+<div>
     <div class="row">
         <div class="col-md-5">
             <h1 class="page-header">导航栏管理</h1>
@@ -14,13 +14,13 @@
     </div>
         <div class="col-md-7" style="margin-top: 65px;">
             <div class="table-responsive">
-                <table class="table table-striped table-hover">
+                <table class="table table-striped table-hover text-nowrap">
                     <thead>
                     <tr>
                         <th><span class="glyphicon glyphicon-paperclip"></span> <span class="visible-lg">ID</span></th>
                         <th><span class="glyphicon glyphicon-file"></span> <span class="visible-lg">名称</span>
                         </th>
-                        <th>路由</th>
+                        <th><span class="glyphicon glyphicon-link"></span><span class="visible-lg">路由</span></th>
                         <th></th>
                         <th><span class="glyphicon glyphicon-pencil"></span> <span class="visible-lg">操作</span>
                         </th>
@@ -33,7 +33,7 @@
                             <td><%=navList[i].nav_name%></td>
                             <td><%=navList[i].nav_url%></td>
                             <td></td>
-                            <td><a href="/admin/navUpdate" class="btn btn-primary" data-id="<%=navList[i].id%>>修改</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(0);" class="btn btn-primary del-btn" data-id="<%=navList[i].id%>">删除</a></td>
+                            <td><a href="/admin/navUpdate" class="btn btn-primary" data-id="<%=navList[i].id%>" >修改</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="btn btn-primary del-btn" data-id="<%=navList[i].id%>">删除</button></td>
                         </tr>
                     <%}%>
                     </tbody>
@@ -44,6 +44,58 @@
 </div>
 {{/block}}
 {{block 'footer'}}
-<script src="/js/index.js"></script>
+<script>
+    $('#add').on('click', function () {
+        let val = $('.add-input').val()
+        let url = $('.add-url').val()
+        if (val == '' || url == '') {
+            alert('输入不能为空')
+            return
+        }
+        $.ajax({
+            url: '/admin/navAddPost',
+            type: 'post',
+            data: {
+                value: val,
+                url: url
+            },
+            dataType: 'json',
+            success: function (res) {
+                if (res.success) {
+                    $('.add-fail').removeClass('show').addClass('fade')
+                    $('.add-success').removeClass('fade').addClass('show').html(res.message)
+                    $('.add-input').val('')
+                    $('.add-url').val('')
+                    setTimeout(function () {
+                        location.href = '/admin/nav'
+                    }, 1000)
+                } else {
+                    $('.add-success').removeClass('show').addClass('fade')
+                    $('.add-fail').removeClass('fade').addClass('show').html(res.message)
+                    $('.add-url').val('')
+                }
+            }
+        })
+    })
+    $('.del-btn').on('click', function () {
+        console.log('sss')
+        if (confirm('你确定要删除吗？')) {
+            let id = $(this).attr('data-id')
+            $.ajax({
+                url: '/admin/navDel?' + 'id=' + id,
+                type: 'get',
+                dataType: 'json',
+                success: function (res) {
+                    if (res.success) {
+                        alert(res.message)
+                        location.reload()
+                    } else {
+                        alert(res.message)
+                    }
+                }
+            })
+        }
+    })
+</script>
 {{/block}}
 

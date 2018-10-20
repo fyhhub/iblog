@@ -1,6 +1,5 @@
 const p = require('../../../config/mysql')
 const mysql = require('mysql')
-
 module.exports = async (ctx) => {
     let OK = true
     let manager_name, manager_login_time

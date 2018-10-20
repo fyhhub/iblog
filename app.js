@@ -3,7 +3,8 @@ const app = new Koa()
 const path = require('path')
 const json = require('koa-json')
 const onerror = require('koa-onerror')
-const bodyparser = require('koa-bodyparser')
+// const bodyparser = require('koa-bodyparser')
+const koaBody = require('koa-body');
 const logger = require('koa-logger')
 const render = require('koa-art-template')
 const serve = require('koa-static')
@@ -37,12 +38,21 @@ const CONFIG = {
 }
 app.use(session(CONFIG, app))
 
-app.use(bodyparser({
-    enableTypes: ['json', 'form', 'text']
+// app.use(bodyparser({
+//     enableTypes: ['json', 'form', 'text']
+// }))
+
+app.use(koaBody({
+    multipart: true,
+    formidable: {
+        maxFileSize: 200*1024*1024    // 设置上传文件大小最大限制，默认2M
+    }
 }))
+
 app.use(json())
 app.use(logger())
 app.use(serve(__dirname + '/public'))
+app.use(serve(__dirname + '/static'))
 
 render(app, {
     root: path.join(__dirname, 'views'),

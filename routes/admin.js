@@ -13,6 +13,8 @@ const articleAdd = require('./admin/article/articleAdd')
 const articleAddPost = require('./admin/article/articleAddPost')
 const fileUpload = require('./admin/article/fileUpload')
 const articleCheck = require('./admin/article/articleCheck')
+const readArticle = require('./admin/article/readArticle')
+const delArticle = require('./admin/article/delArticle')
 // get
 router.get('/admin',loginController)
 router.get('/admin/index',indexController)
@@ -21,17 +23,17 @@ router.get('/admin/nav',navController)
 router.get('/admin/navAdd',navAdd)
 router.get('/admin/navDel',navDel)
 router.get('/admin/navUpdate',navUpdate)
-router.get('/admin/articleAdd/:id',articleAdd)
+router.get('/admin/articleAdd',articleAdd)
 router.get('/admin/articleCheck',articleCheck)
-
-
+router.get('/admin/readArticle',readArticle)
+router.get('/admin/delArticle',delArticle)
 
 // post
 router.post('/admin/navUpdatePost',navUpdatePost)
 router.post('/admin/navAddPost',navAddPost)
 router.post('/admin',loginPostController)
 router.post('/admin/articleAddPost',articleAddPost)
-router.post('/file/upload',fileUpload)
+router.post('/file/uploadImg',fileUpload)
 
 
 

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/editor/css/editormd.css"/>
+</head>
+<body>
+<div id="editormd">
+    　<textarea style="display:none;" placeholder="markdown语言">{{content}}</textarea>
+</div>
+<script src="/js/jquery-2.1.1.min.js"></script>
+<script src="/editor/lib/marked.min.js"></script>
+<script src="/editor/lib/prettify.min.js"></script>
+<script src="/editor/lib/raphael.min.js"></script>
+<script src="/editor/lib/underscore.min.js"></script>
+<script src="/editor/lib/sequence-diagram.min.js"></script>
+<script src="/editor/lib/flowchart.min.js"></script>
+<script src="/editor/lib/jquery.flowchart.min.js"></script>
+<script src="/editor/src/editormd.js"></script>
+<script type="text/javascript">
+    editormd.markdownToHTML("editormd", {
+        htmlDecode      : "style,script,iframe",
+        emoji           : true,
+        taskList        : true,
+        tex             : true,  // 默认不解析
+        flowChart       : true,  // 默认不解析
+        sequenceDiagram : true  // 默认不解析
+    });
+</script>
+</body>
+</html>
