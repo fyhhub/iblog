@@ -1,5 +1,5 @@
 const p = require('../config/mysql')
-const saveArticle = async () => {
+const getArticleList = async () => {
     var list = []
     await p.query(`select * from article`)
         .then((data) => {
@@ -12,7 +12,8 @@ const saveArticle = async () => {
                     article_title: item.article_title,
                     article_read: item.article_read,
                     article_check: item.article_check,
-                    article_url: item.article_url
+                    article_url: item.article_url,
+                    article_introduce_img: item.article_introduce_img
                 })
             })
         })
@@ -22,4 +23,4 @@ const saveArticle = async () => {
         })
     return list
 }
-module.exports = saveArticle
+module.exports = getArticleList

@@ -1,9 +1,10 @@
 const p = require('../config/mysql')
 const getArticleUrlById = async (id) => {
-    let url = ''
-    await p.query(`select article_url from article where id = '${id}'`)
+    let url = {}
+    await p.query(`select article_url, article_introduce_img from article where id = '${id}'`)
         .then((data) => {
-            url = data[0].article_url
+                url.article_url = data[0].article_url
+                url.article_introduce_img = data[0].article_introduce_img
         })
         .catch((err) => {
             console.log(err)
