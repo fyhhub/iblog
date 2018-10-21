@@ -26,7 +26,7 @@ module.exports = async (ctx) => {
     acticleInfo.article_time = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + '  ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds()
     acticleInfo.article_tags = tag
     acticleInfo.article_title = title
-    acticleInfo.article_url = path.join(__dirname, `./source/${title}---${acticleInfo.id}.md`)
+    acticleInfo.article_url = path.join(__dirname.slice(0, __dirname.length - 21), `./public/articles/${acticleInfo.id}-${title}.md`)
     Info = await saveArticle(acticleInfo)
     if (Info.success) {
         fs.writeFileSync(acticleInfo.article_url, content)

@@ -62,7 +62,55 @@ $(function () {
     })
     $('#delmany').on('click', function () {
         if (confirm('你确定要删除吗？')){
-            $('.checkmany:checked').parent().find('.del').trigger('click')
+            let ids = []
+            $('.checkmany:checked').each(function (item) {
+                ids.push($(this).parent().next().text())
+            })
+            $.ajax({
+                url: '/admin/delArticle/?ids=' + ids.join('-'),
+                type: 'get',
+                dataType: 'json',
+                success: function (res) {
+                    if (res.success) {
+                        alert(res.message)
+                        $('tr').each(function (item) {
+                            if (ids.includes($(this).attr('data-id'))) {
+                                $(this).remove()
+                            }
+                        })
+                    } else {
+                        alert(res.message)
+                    }
+                }
+            })
+
+        }
+    })
+
+    $('#checkmany').on('click', function () {
+        if (confirm('确定审核？')){
+            let ids = []
+            $('.checkmany:checked').each(function (item) {
+                ids.push($(this).parent().next().text())
+            })
+            $.ajax({
+                url: '/admin/articleCheck/changeStatus?ids=' + ids.join('-'),
+                type: 'get',
+                dataType: 'json',
+                success: function (res) {
+                    if (res.success) {
+                        alert(res.message)
+                        $('.check').each(function () {
+                            if (ids.includes($(this).parent().attr('data-id'))) {
+                                $(this).attr("disabled",true)
+                            }
+                        })
+                    } else {
+                        alert(res.message)
+                    }
+                }
+            })
+
         }
     })
 
