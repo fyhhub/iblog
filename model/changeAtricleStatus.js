@@ -4,7 +4,7 @@ const resInfo = {
     message: ''
 }
 const changeAtricleStatus = async (id) => {
-    await p.query(`update article set article_check = '1' where id = '${id}'`)
+    await p.query(`update article set article_check = 1 where id = '${id}'`)
         .then((data) => {
             if (data.affectedRows > 0) {
                 resInfo.success = true

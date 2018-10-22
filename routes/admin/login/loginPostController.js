@@ -1,5 +1,6 @@
 const p = require('../../../config/mysql')
 const mysql = require('mysql')
+const xss = require('xss')
 const resInfo = {
     valid: false,
     message: ''
@@ -8,7 +9,9 @@ var isAdmin = {
     name: ''
 }
 module.exports = async (ctx) => {
-    const {username, password} = ctx.request.body
+    let {username, password} = ctx.request.body
+    username = xss(username)
+    password = xss(password)
     const date = new Date();
     await p.query(`select * from admin where manager_name = ${mysql.escape(username)} and manager_password = ${mysql.escape(password)}`).then((data) => {
         if (data.length === 0) {

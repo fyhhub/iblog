@@ -4,7 +4,7 @@ const resInfo = {
     success: false,
     message: ''
 }
-const updateArtcleIntro = async (id, article_introduce_img) => {
+const updateArticleIntro = async (id, article_introduce_img) => {
     await p.query(`update article set article_introduce_img = ${mysql.escape(article_introduce_img)} where id = '${id}'`)
         .then((data) => {
             if (data.affectedRows > 0) {
@@ -22,4 +22,4 @@ const updateArtcleIntro = async (id, article_introduce_img) => {
         })
     return resInfo
 }
-module.exports = updateArtcleIntro
+module.exports = updateArticleIntro

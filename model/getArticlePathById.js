@@ -1,5 +1,5 @@
 const p = require('../config/mysql')
-const getArticleUrlById = async (id) => {
+const getArticlePathById = async (id) => {
     let url = {}
     await p.query(`select article_url, article_introduce_img from article where id = '${id}'`)
         .then((data) => {
@@ -12,4 +12,4 @@ const getArticleUrlById = async (id) => {
         })
     return url
 }
-module.exports = getArticleUrlById
+module.exports = getArticlePathById

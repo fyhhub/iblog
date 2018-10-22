@@ -1,5 +1,4 @@
 const changeAtricleStatus = require('../../../model/changeAtricleStatus')
-const fs = require('fs')
 module.exports = async (ctx) => {
     if (ctx.request.query.ids) {
         let ids = ctx.request.query.ids.split('-')

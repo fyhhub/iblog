@@ -1,12 +1,12 @@
 const delArticleById = require('../../../model/delArticleById')
-const getArticleUrlById = require('../../../model/getArticleUrlById')
+const getArticlePathById = require('../../../model/getArticlePathById')
 const fs = require('fs')
 module.exports = async (ctx) => {
     if (ctx.request.query.ids) {
         let ids = ctx.request.query.ids.split('-')
         let resInfo = null
         for(let item of ids) {
-            let url = await getArticleUrlById(item)
+            let url = await getArticlePathById(item)
             resInfo = await delArticleById(item)
             if (fs.existsSync(url.article_url)) {
                 fs.unlinkSync(url.article_url)
@@ -21,7 +21,7 @@ module.exports = async (ctx) => {
         ctx.body = resInfo
     }
     if (ctx.request.query.id) {
-        let url = await getArticleUrlById(ctx.request.query.id)
+        let url = await getArticlePathById(ctx.request.query.id)
         let resInfo = await delArticleById(ctx.request.query.id)
         if (resInfo.success) {
             if (fs.existsSync(url.article_url)) {

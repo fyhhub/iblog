@@ -3,17 +3,15 @@ const app = new Koa()
 const path = require('path')
 const json = require('koa-json')
 const onerror = require('koa-onerror')
-// const bodyparser = require('koa-bodyparser')
 const koaBody = require('koa-body');
 const logger = require('koa-logger')
 const render = require('koa-art-template')
 const serve = require('koa-static')
-const options = require('./config/mysql')
 const main = require('./routes/main')
 const api = require('./routes/api')
 const admin = require('./routes/admin')
 const session = require('koa-session')
-
+const router = require('koa-router')();
 
 // error handler
 onerror(app)
@@ -38,9 +36,7 @@ const CONFIG = {
 }
 app.use(session(CONFIG, app))
 
-// app.use(bodyparser({
-//     enableTypes: ['json', 'form', 'text']
-// }))
+
 
 app.use(koaBody({
     multipart: true,
@@ -74,12 +70,32 @@ app.use(async (ctx, next) => {
             return
         }
     }
-
     await next()
+})
+
+app.use(async (ctx, next) => {
+    try {
+        await next()
+        if (ctx.status === 404) {
+            ctx.throw(404);
+        }
+    } catch (err) {
+        console.error(err.stack);
+        const status = err.status || 500;
+        ctx.status = status;
+        if (status === 404) {
+            ctx.render('main/404.html')
+        } else if (status === 500) {
+            ctx.body = '500'
+        }
+
+    }
 })
 app.use(main.routes(), main.allowedMethods())
 // app.use(api.routes(), api.allowedMethods())
 app.use(admin.routes(), admin.allowedMethods())
+
+
 
 
 // logger

@@ -13,12 +13,13 @@ const getArticleList = async () => {
                     article_read: item.article_read,
                     article_check: item.article_check,
                     article_url: item.article_url,
-                    article_introduce_img: item.article_introduce_img
+                    article_introduce_img: item.article_introduce_img,
+                    article_introduce: item.article_introduce
                 })
             })
         })
         .catch((err) => {
-            console.log('导航栏列表查询失败')
+            console.log('文章列表查询失败')
             console.log(err)
         })
     return list

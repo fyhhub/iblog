@@ -15,10 +15,9 @@ $(function () {
             }
         })
     })
-    $('.update').on('click', function () {
 
-    })
     $('.del').on('click', function () {
+        let that = $(this)
         if (confirm('你确定要删除吗?')) {
             $.ajax({
                 url: '/admin/delArticle/?id=' + $(this).parent().attr('data-id'),
@@ -27,7 +26,7 @@ $(function () {
                 success: function (res) {
                     if (res.success) {
                         alert(res.message)
-                        location.reload()
+                        that.parent().parent().remove()
                     } else {
                         alert(res.message)
                     }
