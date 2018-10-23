@@ -35,8 +35,8 @@
     <div class="blogs">
         <%for(var i = 0;i < articleList.length;i++) {%>
             <%if (articleList[i].article_check == 1) {%>
-                <li><span class="blogpic"><a href="/"><img src="<%=articleList[i].article_introduce_img%>"></a></span>
-                    <h3 class="blogtitle"><a href="/"><%=articleList[i].article_title%></a></h3>
+                <li><span class="blogpic"><a href="/article?id=<%=articleList[i].id%>"><img src="<%=articleList[i].article_introduce_img%>"></a></span>
+                    <h3 class="blogtitle"><a href="/article?id=<%=articleList[i].id%>"><%=articleList[i].article_title%></a></h3>
                     <div class="bloginfo">
                         <p><%=articleList[i].article_introduce%>...</p>
                     </div>

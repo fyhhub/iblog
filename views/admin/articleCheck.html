@@ -24,36 +24,53 @@
         <th style="text-align: center">路径</th>
         </thead>
         <tbody>
-        <%for (var i = list.length - 1;i >= 0;i--) {%>
-        <tr data-id="<%=list[i].id%>">
-            <td><input type="checkbox" class="checkmany" style="width: 20px;height: 20px;"></td>
-            <td><%=list[i].id%></td>
-            <td><%=list[i].article_author%></td>
-            <td><%=list[i].article_tags%></td>
-            <td><%=list[i].article_time%></td>
-            <td><%=list[i].article_title%></td>
-            <td><%=list[i].article_read%></td>
-            <td data-id="<%=list[i].id%>">
-                <input type="file" value=""  class="uploadImg" name="uploadImg" title="上传插图" >
-                <input type="button" class="upload btn btn-primary"  value="<%=list[i].article_introduce_img? '重新上传' : '上传图片'%>" style="margin-top: 5px;"/>
-            </td>
-            <%if (list[i].article_check == 0) {%>
-            <td>待审核</td>
-            <%}else{%>
-            <td>审核通过</td>
+            <%for (var i = list.length - 1;i >= 0;i--) {%>
+            <tr data-id="<%=list[i].id%>">
+                <td><input type="checkbox" class="checkmany" style="width: 20px;height: 20px;"></td>
+                <td><%=list[i].id%></td>
+                <td><%=list[i].article_author%></td>
+                <td><%=list[i].article_tags%></td>
+                <td><%=list[i].article_time%></td>
+                <td><%=list[i].article_title%></td>
+                <td><%=list[i].article_read%></td>
+                <td data-id="<%=list[i].id%>">
+                    <input type="file" value=""  class="uploadImg" name="uploadImg" title="上传插图" >
+                    <input type="button" class="upload btn btn-primary"  value="<%=list[i].article_introduce_img? '重新上传' : '上传图片'%>" style="margin-top: 5px;"/>
+                </td>
+                <%if (list[i].article_check == 0) {%>
+                <td>待审核</td>
+                <%}else{%>
+                <td>审核通过</td>
+                <%}%>
+                <td data-id="<%=list[i].id%>">
+                    <button  type="button"  class="btn btn-success check" style="margin: 5px;"  <%=list[i].article_check == 0? '' : 'disabled'%> >审核</button>
+                    <a  href="/admin/readArticle?id=<%=list[i].id%>"  class="btn btn-success" style="margin: 5px;" target="_blank">查看</a>
+                    <a  class="btn btn-success update" style="margin: 5px;" href="/admin/articleAdd?id=<%=list[i].id%>" target="_blank">修改</a>
+                    <button class="btn btn-success del" style="margin: 5px;">删除</button>
+                </td>
+                <td><%=list[i].article_url%></td>
+            </tr>
             <%}%>
-            <td data-id="<%=list[i].id%>">
-                <button  type="button"  class="btn btn-success check" style="margin: 5px;"  <%=list[i].article_check == 0? '' : 'disabled'%> >审核</button>
-                <a  href="/admin/readArticle?id=<%=list[i].id%>"  class="btn btn-success" style="margin: 5px;" target="_blank">查看</a>
-                <a  class="btn btn-success update" style="margin: 5px;" href="/admin/articleAdd?id=<%=list[i].id%>" target="_blank">修改</a>
-                <button class="btn btn-success del" style="margin: 5px;">删除</button>
-            </td>
-            <td><%=list[i].article_url%></td>
-        </tr>
-        <%}%>
         </tbody>
     </table>
 </div>
+    <nav aria-label="Page navigation" style="display: flex;justify-content: center;">
+        <ul class="pagination pagination-lg">
+            <li class="<%= page==1? 'disabled' : '' %>" >
+                <a  href="<%= page==1? 'javascript:void(0);' : '/admin/articleCheck?page=' + (page--) %>"   aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <%for(var j = 1;j <= count;j++) {%>
+                <li><a href="/admin/articleCheck?page=<%=j%>"><%=j%></a></li>
+            <%}%>
+            <li class="<%= page==count-1? 'disabled' : '' %>">
+                <a href="<%= page==count-1? 'javascript:void(0);' : '/admin/articleCheck?page=' + (page++) %>" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
 {{/block}}
 {{block 'footer'}}
     <script src="/js/articleCheck.js"></script>

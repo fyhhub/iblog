@@ -1,9 +1,6 @@
 const getNavList = require('../../../model/getNavList')
 module.exports = async (ctx) => {
-    let navList = null
-    await getNavList(function (data) {
-        navList = data
-    })
+    let navList = await getNavList()
     ctx.render('admin/update-nav.html', {
         navList
     })

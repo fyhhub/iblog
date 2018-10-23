@@ -4,7 +4,7 @@ const resInfo = {
     success: true,
     message: ''
 }
-const updateNavList = async (id, nav_name, nav_url, callback) => {
+const updateNavList = async (id, nav_name, nav_url) => {
     await p.query(`update nav set nav_name = ${mysql.escape(nav_name)}, nav_url = ${mysql.escape(nav_url)} where id = ${mysql.escape(id)}`)
         .then((data) => {
             if (data.affectedRows > 0) {
@@ -21,6 +21,6 @@ const updateNavList = async (id, nav_name, nav_url, callback) => {
             console.log('导航栏列表修改失败')
             return
         })
-    callback && callback(resInfo)
+    return resInfo
 }
 module.exports = updateNavList

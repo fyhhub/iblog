@@ -1,5 +1,5 @@
 const p = require('../config/mysql')
-const getNavList = async (callback) => {
+const getNavList = async () => {
     var list = []
     await p.query(`select id,nav_name, nav_url from nav`)
         .then((data) => {
@@ -15,6 +15,6 @@ const getNavList = async (callback) => {
             console.log('导航栏列表查询失败')
             return
         })
-    callback && callback(list)
+    return list
 }
 module.exports = getNavList

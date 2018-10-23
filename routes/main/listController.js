@@ -1,3 +1,7 @@
+const getNavList = require('../../model/getNavList')
 module.exports = async (ctx, next) => {
-    await ctx.render('main/list')
+    let navList = await getNavList()
+    await ctx.render('main/list', {
+        navList
+    })
 }

@@ -11,7 +11,6 @@ const main = require('./routes/main')
 const api = require('./routes/api')
 const admin = require('./routes/admin')
 const session = require('koa-session')
-const router = require('koa-router')();
 
 // error handler
 onerror(app)
@@ -73,24 +72,24 @@ app.use(async (ctx, next) => {
     await next()
 })
 
-app.use(async (ctx, next) => {
-    try {
-        await next()
-        if (ctx.status === 404) {
-            ctx.throw(404);
-        }
-    } catch (err) {
-        console.error(err.stack);
-        const status = err.status || 500;
-        ctx.status = status;
-        if (status === 404) {
-            ctx.render('main/404.html')
-        } else if (status === 500) {
-            ctx.body = '500'
-        }
-
-    }
-})
+// app.use(async (ctx, next) => {
+//     try {
+//         await next()
+//         if (ctx.status === 404) {
+//             ctx.throw(404);
+//         }
+//     } catch (err) {
+//         console.error(err.stack);
+//         const status = err.status || 500;
+//         ctx.status = status;
+//         if (status === 404) {
+//             ctx.render('main/404.html')
+//         } else if (status === 500) {
+//             ctx.body = '500'
+//         }
+//
+//     }
+// })
 app.use(main.routes(), main.allowedMethods())
 // app.use(api.routes(), api.allowedMethods())
 app.use(admin.routes(), admin.allowedMethods())
