@@ -4,9 +4,9 @@ var wrapper = require('co-mysql'),
 
 var pool = mysql.createPool({
     host : 'localhost',
-    port : 3306,
+    port : 3308,
     database : 'mysite',
     user: 'root',
-    password : '!Fyh138199183828'
+    password : 'root'
 }), p = wrapper(pool);
 module.exports = p

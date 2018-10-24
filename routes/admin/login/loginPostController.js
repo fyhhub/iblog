@@ -27,7 +27,7 @@ module.exports = async (ctx) => {
     })
     await p.query(`update admin set manager_login_time = ${mysql.escape(date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + '  ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds())} where manager_name = ${mysql.escape(username)}`)
         .then((data) => {
-            console.log(data)
+
         })
         .catch((err) => {
             ctx.throw(err)

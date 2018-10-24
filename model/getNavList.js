@@ -1,20 +1,19 @@
 const p = require('../config/mysql')
-const getNavList = async () => {
+const getInfoList = async () => {
     var list = []
-    await p.query(`select id,nav_name, nav_url from nav`)
+    await p.query(`select * from nav`)
         .then((data) => {
             data.forEach((item) => {
                 list.push({
                     nav_name: item.nav_name,
-                    nav_url: item.nav_url,
-                    id: item.id
+                    nav_url: item.nav_url
                 })
             })
         })
         .catch((err) => {
             console.log('导航栏列表查询失败')
-            return
+            console.log(err)
         })
     return list
 }
-module.exports = getNavList
+module.exports = getInfoList

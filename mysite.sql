@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80012
 File Encoding         : 65001
 
-Date: 2018-10-23 23:09:56
+Date: 2018-10-24 22:10:01
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -30,7 +30,7 @@ CREATE TABLE `admin` (
 -- ----------------------------
 -- Records of admin
 -- ----------------------------
-INSERT INTO `admin` VALUES ('1', 'admin', '123456', '2018-10-23  21:25:55');
+INSERT INTO `admin` VALUES ('1', 'admin', 'fanyihui', '2018-10-24  22:7:44');
 
 -- ----------------------------
 -- Table structure for article
@@ -41,23 +41,40 @@ CREATE TABLE `article` (
   `article_author` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `article_tags` varchar(20) DEFAULT NULL,
   `article_time` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `article_title` varchar(30) DEFAULT NULL,
+  `article_title` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `article_read` smallint(6) DEFAULT NULL,
   `article_url` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `article_check` tinyint(4) DEFAULT NULL,
   `article_introduce_img` varchar(200) DEFAULT NULL,
-  `article_introduce` varchar(200) DEFAULT NULL
+  `article_introduce` varchar(300) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of article
 -- ----------------------------
-INSERT INTO `article` VALUES ('9898809270d5', 'admin', 'python', '2018-10-22  20:50:11', 'urllib2库的使用(爬虫)', '0', 'C:\\Users\\Administrator\\Desktop\\mysite\\public\\articles\\9898809270d5-urllib2库的使用(爬虫).md', '1', '/images/articleImg/9898809270d5-text01.jpg', 'urllib2库的使用(爬虫)urllib2库的使用(爬虫)urllib2库的使用(爬虫)urllib2库的使用(爬虫)urllib2库的使用(爬虫)');
-INSERT INTO `article` VALUES ('ee67be064607', 'admin', 'Python', '2018-10-22  21:16:53', 'Python之进程', '0', 'C:\\Users\\Administrator\\Desktop\\mysite\\public\\articles\\ee67be064607-Python之进程.md', '1', '/images/articleImg/ee67be064607-t03.jpg', 'Python之进程Python之进程Python之进程Python之进程Python之进程Python之进程Python之进程Python之进程Python之进程');
-INSERT INTO `article` VALUES ('83f56892f94e', 'admin', 'Python', '2018-10-22  22:11:13', 'Cookielib库的使用', '0', 'C:\\Users\\Administrator\\Desktop\\mysite\\public\\articles\\83f56892f94e-Cookielib库的使用.md', '1', '/images/articleImg/83f56892f94e-t02.jpg', 'Cookielib库的使用Cookielib库的使用Cookielib库的使用Cookielib库的使用');
-INSERT INTO `article` VALUES ('dd1b82676f27', 'admin', 'asd', '2018-10-23  21:45:17', 'asd', '0', 'C:\\Users\\Administrator\\Desktop\\mysite\\public\\articles\\dd1b82676f27-asd.md', '0', '', 'asd');
-INSERT INTO `article` VALUES ('7b551bef79d9', 'admin', 'asda', '2018-10-23  21:45:27', 'asd', '0', 'C:\\Users\\Administrator\\Desktop\\mysite\\public\\articles\\7b551bef79d9-asd.md', '0', '', 'sdad');
-INSERT INTO `article` VALUES ('65cce3ffbd58', 'admin', 'sdas', '2018-10-23  21:45:35', 'asda', '0', 'C:\\Users\\Administrator\\Desktop\\mysite\\public\\articles\\65cce3ffbd58-asda.md', '0', '', 'dasd');
+INSERT INTO `article` VALUES ('81225cd62507', 'admin', 'Canvas', '2018-10-24  20:47:17', 'Canvas基础简介及入门', '0', 'C:\\Users\\Administrator\\Desktop\\mysite\\public\\articles\\81225cd62507-Canvas基础简介及入门.md', '1', '', 'Canvas简单入门，介绍了一些样例');
+INSERT INTO `article` VALUES ('7a0af171d660', 'admin', 'JS', '2018-10-24  20:50:15', 'EventUtil——跨浏览器的事件对象', '0', 'C:\\Users\\Administrator\\Desktop\\mysite\\public\\articles\\7a0af171d660-EventUtil——跨浏览器的事件对象.md', '1', '', '封装了能够兼容多种浏览器的对象，它能够获取事件对象，并能够给dom元素绑定时间和解绑事件等');
+INSERT INTO `article` VALUES ('9d9a32499ee0', 'admin', 'Vue', '2018-10-24  20:55:51', 'Webpack基本配置及其他插件的配置', '0', 'C:\\Users\\Administrator\\Desktop\\mysite\\public\\articles\\9d9a32499ee0-Webpack基本配置及其他插件的配置.md', '1', '/images/articleImg/9d9a32499ee0-zd01.jpg', 'webpack基本配置，还有一些loader的安装，能解决基本的webpack的使用');
+INSERT INTO `article` VALUES ('7685a0066fc9', 'admin', '插件', '2018-10-24  21:26:47', '基于bootstrap的表单验证插件bootstrapValidator', '0', 'C:\\Users\\Administrator\\Desktop\\mysite\\public\\articles\\7685a0066fc9-基于bootstrap的表单验证插件bootstrapValidator.md', '1', '', 'bootstrapValidator是一款基于bootstrap，很好用并且简单的前端表单验证插件，但只是在前端进行验证');
+
+-- ----------------------------
+-- Table structure for info
+-- ----------------------------
+DROP TABLE IF EXISTS `info`;
+CREATE TABLE `info` (
+  `name` varchar(20) DEFAULT NULL,
+  `net_name` varchar(20) DEFAULT NULL,
+  `career` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `email` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `contact` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `introduce` varchar(255) DEFAULT NULL,
+  `avatar` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of info
+-- ----------------------------
+INSERT INTO `info` VALUES ('admin', 'Fun范', 'web初学者', '1131153523@qq.com', '', '已入坑前端7个月，会经常分享自己学习笔记和心得，热心前端方向，爱看技术文章。', '/images/avatar.jpg');
 
 -- ----------------------------
 -- Table structure for nav

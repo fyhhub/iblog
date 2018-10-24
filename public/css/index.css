@@ -132,10 +132,23 @@ article {
 }
 
 .blogs li {
-    /*margin-bottom: 10px;*/
+    margin-bottom: 10px;
     overflow: hidden;
-    /*padding: 20px;*/
-    /*background: #fff*/
+    padding: 20px;
+    background: #fff
+}
+.blog {
+    box-sizing: border-box;
+    padding-right: 40px;
+}
+.blog,.article {
+    float: left;
+    width: 70%;
+    overflow: hidden;
+}
+
+.blog li {
+    overflow: hidden;
 }
 
 h3.blogtitle {
@@ -237,7 +250,7 @@ h3.blogtitle {
     float: right;
     width: 28%;
     overflow: hidden;
-    position: relative
+    position: relative;
 }
 
 .about {
