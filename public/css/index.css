@@ -135,7 +135,11 @@ article {
     margin-bottom: 10px;
     overflow: hidden;
     padding: 20px;
-    background: #fff
+    background: #fff;
+
+}
+.blogs li img{
+    max-height: 160px;
 }
 .blog {
     box-sizing: border-box;

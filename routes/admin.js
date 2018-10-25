@@ -16,6 +16,9 @@ const articleCheck = require('./admin/article/articleCheck')
 const readArticle = require('./admin/article/readArticle')
 const delArticle = require('./admin/article/delArticle')
 const changeArticleStatus = require('./admin/article/changeArticleStatus')
+const userInfo = require('./admin/Info/userInfo')
+const setUserInfo = require('./admin/Info/setUserInfo')
+const uploadAvatar = require('./admin/Info/uploadAvatar')
 // get
 router.get('/admin',loginController)
 router.get('/admin/index',indexController)
@@ -29,6 +32,7 @@ router.get('/admin/articleCheck',articleCheck)
 router.get('/admin/readArticle',readArticle)
 router.get('/admin/delArticle',delArticle)
 router.get('/admin/articleCheck/changeStatus',changeArticleStatus)
+router.get('/admin/userInfo',userInfo)
 
 // post
 router.post('/admin/navUpdatePost',navUpdatePost)
@@ -36,6 +40,8 @@ router.post('/admin/navAddPost',navAddPost)
 router.post('/admin',loginPostController)
 router.post('/admin/articleAddPost',articleAddPost)
 router.post('/admin/file/uploadImg',uploadImg)
+router.post('/admin/file/uploadAvatar',uploadAvatar)
+router.post('/admin/setUserInfo',setUserInfo)
 
 
 

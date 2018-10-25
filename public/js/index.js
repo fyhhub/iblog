@@ -1,6 +1,6 @@
 $(function () {
     getData('/api/masterInfo', 'get',null, function (res) {
-        $('.avatar img').attr(res.avatar)
+        $('.avatar img').attr('src',res.avatar)
         $('.abname').text(res.net_name)
         $('.abposition').text(res.career)
         $('.abtext').text(res.introduce)

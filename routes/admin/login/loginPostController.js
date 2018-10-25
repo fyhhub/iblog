@@ -10,7 +10,7 @@ var isAdmin = {
 }
 module.exports = async (ctx) => {
     let {username, password} = ctx.request.body
-    username = xss(username)
+    username = xss(username.trim())
     password = xss(password)
     const date = new Date();
     await p.query(`select * from admin where manager_name = ${mysql.escape(username)} and manager_password = ${mysql.escape(password)}`).then((data) => {

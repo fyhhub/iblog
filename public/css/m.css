@@ -52,6 +52,9 @@
     .blogs {
         width: 65%
     }
+    .blog {
+        width: 65%
+    }
 
     .sidebar {
         width: 33%
@@ -153,6 +156,9 @@
     .blogs {
         width: 62%;
     }
+    .blog {
+        width: 62%;
+    }
 
     .sidebar {
         width: 36%;
@@ -226,8 +232,11 @@
 }
 
 @media only screen and (min-width: 360px) and (max-width: 479px) {
-    header, .tophead, article, .leftbox, .sidebar, .blogs {
+    header, .tophead, article, .leftbox, .sidebar, .blogs,.blog {
         width: 100%
+    }
+    .sidebar {
+        display: none;
     }
 
     header {
@@ -324,7 +333,7 @@
 }
 
 @media only screen and (max-width: 359px) {
-    header, .tophead, article, .leftbox, .sidebar, .blogs{
+    header, .tophead, article, .leftbox, .sidebar, .blogs, .blog{
         width: 100%
     }
 

@@ -1,0 +1,119 @@
+{{extend '../layout/adminLayout.html'}}
+{{block 'title'}}后台首页{{/block}}
+{{block 'content'}}
+<div class="profile-left">
+    <!-- PROFILE HEADER -->
+    <div class="profile-header">
+        <div class="overlay"></div>
+        <div class="profile-main">
+            <img src="<%=info.avatar%>" class="img-circle" alt="Avatar" style="width: 100px;height: 100px;">
+            <h3 class="name"><%=info.name%></h3>
+            <span class="online-status status-available">Available</span>
+        </div>
+
+    </div>
+    <!-- END PROFILE HEADER -->
+    <!-- PROFILE DETAIL -->
+    <div class="profile-detail">
+        <div class="profile-info">
+            <h4 class="heading">基本信息</h4>
+            <ul class="list-unstyled list-justify">
+                <li>网名<span><%=info.net_name%></span></li>
+                <li>电子邮箱 <span><%=info.email%></span></li>
+                <li>个人网站 <span><a href="https://www.fanyihui666.cn">www.fanyihui666.cn</a></span></li>
+                <li>职业爱好<span><%=info.career%></span></li>
+            </ul>
+        </div>
+        <div class="profile-info">
+            <h4 class="heading">社交账号</h4>
+            <ul class="list-inline social-icons">
+                <li><a href="https://github.com/1131153523" class="github-bg"><i class="fa fa-github"></i></a></li>
+            </ul>
+        </div>
+        <div class="profile-info">
+            <h4 class="heading">关于我</h4>
+            <p><%=info.introduce%></p>
+        </div>
+    </div>
+    <!-- END PROFILE DETAIL -->
+</div>
+<div class="profile-right">
+    <div class="panel">
+        <div class="panel-heading">
+            <h3 class="panel-title">个人信息管理</h3>
+        </div>
+        <div class="panel-body">
+            <input type="text" class="form-control net_name" value="<%=info.net_name%>" placeholder="网名" autocomplete="off">
+            <br>
+            <input type="text" class="form-control career" value="<%=info.career%>" placeholder="职业爱好" autocomplete="off">
+            <br>
+            <input type="email" class="form-control email" value="<%=info.email%>" placeholder="电子邮箱" autocomplete="off">
+            <br>
+            <input type="联系方式" class="form-control contact" value="<%=info.contact%>" placeholder="联系方式" autocomplete="off">
+            <br>
+            <textarea class="form-control introduce" placeholder="个人简介" rows="4" ><%=info.introduce%></textarea>
+            <br>
+            <input type="file" style="display: none" id="uploadAvatarFile">
+            <button class="btn btn-warning" style="position: relative;" id="uploadAvatar" >
+                <span class="fa fa-upload"></span>上传头像
+            </button>
+            <button type="button" class="btn btn-success ensure">确认上传</button>
+        </div>
+        <br>
+    </div>
+    <div class="text-center"><button  class="btn btn-primary saveInfo" data-name="<%=info.name%>" >保存信息</button></div>
+</div>
+
+{{/block}}
+{{block 'footer'}}
+<script src="/js/common.js"></script>
+<script>
+    $(function () {
+        let file = $("[type='file']")
+        $('#uploadAvatar').on('click', function () {
+            file.click()
+        })
+        $('.ensure').on('click', function () {
+            let uploadAvatar = $('#uploadAvatar').prev()[0].files[0]
+            if (uploadAvatar === undefined) {
+                return
+            }
+            let fd = new FormData()
+            fd.append('uploadAvatar', uploadAvatar)
+            $.ajax({
+                url: '/admin/file/uploadAvatar',
+                type:'post',
+                data: fd,
+                processData:false,
+                contentType: false,
+                success: function (res) {
+                    if (res.success) {
+                        alert(res.message)
+                    } else {
+                        alert(res.message)
+                    }
+                }
+            })
+        })
+        $('.saveInfo').on('click', function () {
+            let info = {
+                name: $('.saveInfo').attr('data-name'),
+                net_name: $('.net_name').val(),
+                career: $('.career').val(),
+                email: $('.email').val(),
+                contact: $('.contact').val(),
+                introduce: $('.introduce').text()
+            }
+            getData('/admin/setUserInfo', 'post', info, function (res) {
+                if (res.success) {
+                    alert(res.message)
+                } else {
+                    alert(res.message)
+                }
+            })
+        })
+
+
+    })
+</script>
+{{/block}}

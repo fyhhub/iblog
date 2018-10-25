@@ -34,7 +34,7 @@
                 <td><%=list[i].article_title%></td>
                 <td><%=list[i].article_read%></td>
                 <td data-id="<%=list[i].id%>">
-                    <input type="file" value=""  class="uploadImg" name="uploadImg" title="上传插图" >
+                    <input type="file"  class="uploadImg" name="uploadImg" title="上传插图" >
                     <input type="button" class="upload btn btn-primary"  value="<%=list[i].article_introduce_img? '重新上传' : '上传图片'%>" style="margin-top: 5px;"/>
                 </td>
                 <%if (list[i].article_check == 0) {%>

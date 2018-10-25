@@ -84,6 +84,7 @@
             success: function (res) {
                 if (!res.valid) {
                     alert(res.message)
+                    $('#password').val('')
                 } else {
                     location.href = '/admin/index'
                 }
