@@ -8,6 +8,7 @@ module.exports = async (ctx) => {
     let {id} = ctx.request.query
     await p.query(`delete from nav where id = ${mysql.escape(id)}`)
         .then((data) => {
+
             if (data.affectedRows > 0) {
                 resInfo.success = true
                 resInfo.message = '删除成功'

@@ -9,6 +9,7 @@ module.exports = async (ctx) => {
     resInfo.success = true
     await p.query(`select nav_name from nav where nav_name = ${mysql.escape(value)}`)
         .then((data) => {
+            console.log(data)
             if (data.length !== 0) {
                 resInfo.success = false
                 resInfo.message = '该导航已存在!'
@@ -24,7 +25,6 @@ module.exports = async (ctx) => {
             .then((data) => {
                 resInfo.success = true
                 resInfo.message = '添加成功!'
-                return
             })
             .catch((err) => {
                 console.log('导航栏列表添加失败')

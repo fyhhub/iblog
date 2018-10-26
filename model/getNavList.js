@@ -1,10 +1,11 @@
 const p = require('../config/mysql')
-const getInfoList = async () => {
-    var list = []
+const getNavList = async () => {
+    let list = []
     await p.query(`select * from nav`)
         .then((data) => {
             data.forEach((item) => {
                 list.push({
+                    id:item.id,
                     nav_name: item.nav_name,
                     nav_url: item.nav_url
                 })
@@ -16,4 +17,4 @@ const getInfoList = async () => {
         })
     return list
 }
-module.exports = getInfoList
+module.exports = getNavList
