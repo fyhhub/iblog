@@ -5,34 +5,12 @@
 {{/block}}
 {{block 'content'}}
 <article style="position: relative;">
-    <div class="blog">
+    <div class="blog animated bounceInLeft">
         <div id="editormd"  class="article" >
             　<textarea style="display:none;" >{{content}}</textarea>
         </div>
     </div>
-    <div class="sidebar">
-        <div class="about">
-            <div class="avatar"><img src="/images/avatar.jpg"></div>
-            <p class="abname"></p>
-            <p class="abposition"></p>
-            <div class="abtext">
-            </div>
-        </div>
-        <div class="cloud">
-            <h2 class="hometitle">标签</h2>
-            <ul>
-
-            </ul>
-        </div>
-        <div class="links">
-            <h2 class="hometitle">友情链接</h2>
-            <ul>
-                <li><a href="http://www.yangqq.com" title=""></a></li>
-                <li><a href="http://www.yangqq.com" title=""></a></li>
-                <li><a href="http://www.yangqq.com" title=""></a></li>
-            </ul>
-        </div>
-    </div>
+    {{include '../layout/sidebar.html'}}
 </article>
 <div class="toTop"
      style="width: 60px;
@@ -49,7 +27,6 @@
     返回顶部
 </div>
 {{/block}}
-
 {{block 'footer'}}
     <script src="/js/jquery-2.1.1.min.js"></script>
     <script src="/editor/lib/marked.min.js"></script>
