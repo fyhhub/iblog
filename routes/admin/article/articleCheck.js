@@ -1,6 +1,10 @@
 const getArticleList = require('../../../model/article/getArticleList')
+const fs = require('fs')
 module.exports = async (ctx) => {
     let list = await getArticleList()
+    list = list.filter((item) => {
+        return  fs.existsSync(item.article_url)
+    })
     if (ctx.request.query.page) {
         let page = ctx.request.query.page - 1
         ctx.render('admin/articleCheck.html', {
