@@ -96,14 +96,16 @@
             })
         })
         $('.saveInfo').on('click', function () {
+            console.log('sss')
             let info = {
                 name: $('.saveInfo').attr('data-name'),
                 net_name: $('.net_name').val(),
                 career: $('.career').val(),
                 email: $('.email').val(),
                 contact: $('.contact').val(),
-                introduce: $('.introduce').text()
+                introduce: $('.introduce').val()
             }
+            console.log(info)
             getData('/admin/setUserInfo', 'post', info, function (res) {
                 if (res.success) {
                     alert(res.message)

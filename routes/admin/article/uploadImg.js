@@ -1,6 +1,6 @@
 const path = require('path')
 const fs = require('fs')
-const updateArticleIntro = require('../../../model/updateArticleIntro')
+const updateArticleIntro = require('../../../model/article/updateArticleIntro')
 module.exports = async (ctx) => {
     const file = ctx.request.files.uploadImg
     console.log(file)

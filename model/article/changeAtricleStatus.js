@@ -1,4 +1,4 @@
-const p = require('../config/mysql')
+const p = require('../../config/mysql')
 const resInfo = {
     success: false,
     message: ''

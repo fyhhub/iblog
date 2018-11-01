@@ -1,4 +1,4 @@
-const p = require('../config/mysql')
+const p = require('../../config/mysql')
 const getInfoList = async () => {
     let Info = []
     await p.query(`select * from info`)

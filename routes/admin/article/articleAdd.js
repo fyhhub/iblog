@@ -1,4 +1,4 @@
-const getArticlePathById = require('../../../model/getArticlePathById')
+const getArticlePathById = require('../../../model/article/getArticlePathById')
 const fs = require('fs')
 module.exports = async (ctx) => {
     if (ctx.request.query.id) {

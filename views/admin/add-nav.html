@@ -33,7 +33,11 @@
                             <td><%=navList[i].nav_name%></td>
                             <td><%=navList[i].nav_url%></td>
                             <td></td>
-                            <td><a href="/admin/navUpdate" class="btn btn-primary" data-id="<%=navList[i].id%>" >修改</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="btn btn-primary del-btn" data-id="<%=navList[i].id%>">删除</button></td>
+                            <td>
+                                <a href="/admin/navUpdate" class="btn btn-primary" data-id="<%=navList[i].id%>" >修改</a>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <button class="btn btn-primary del-btn" data-id="<%=navList[i].id%>">删除</button>
+                            </td>
                         </tr>
                     <%}%>
                     </tbody>

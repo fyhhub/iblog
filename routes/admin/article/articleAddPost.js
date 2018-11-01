@@ -1,10 +1,10 @@
 const xss = require('xss')
 const fs = require('fs')
-const saveArticle = require('../../../model/saveArticle')
+const saveArticle = require('../../../model/article/saveArticle')
 const path = require('path')
 const md5 = require('blueimp-md5')
-const getArticlePathById = require('../../../model/getArticlePathById')
-const delArticleById = require('../../../model/delArticleById')
+const getArticlePathById = require('../../../model/article/getArticlePathById')
+const delArticleById = require('../../../model/article/delArticleById')
 const acticleInfo = {
     id: '',
     article_author: '',

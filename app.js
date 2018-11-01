@@ -58,7 +58,10 @@ render(app, {
 
 // routes
 //session拦截
-
+app.use(async (ctx, next) => {
+    let ip = ctx.request.get("X-Real-IP") || ctx.request.get("X-Forwarded-For") || ctx.request.ip
+    await next()
+})
 app.use(async (ctx, next) => {
     const allowpage = ['/admin']
     if (allowpage.includes(ctx.originalUrl)) {

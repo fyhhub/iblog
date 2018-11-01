@@ -1,4 +1,4 @@
-const getArticleList = require('../../../model/getArticleList')
+const getArticleList = require('../../../model/article/getArticleList')
 module.exports = async (ctx) => {
     let list = await getArticleList()
     if (ctx.request.query.page) {

@@ -1,4 +1,4 @@
-const p = require('../config/mysql')
+const p = require('../../config/mysql')
 const mysql = require('mysql')
 const resInfo = {
     success: false,
@@ -16,7 +16,6 @@ const saveArticle = async (acticleInfo) => {
             resInfo.success = false
             resInfo.message = '存入数据库失败'
             console.log('存入数据库失败')
-            return
         })
     return resInfo
 }

@@ -1,5 +1,5 @@
-const delArticleById = require('../../../model/delArticleById')
-const getArticlePathById = require('../../../model/getArticlePathById')
+const delArticleById = require('../../../model/article/delArticleById')
+const getArticlePathById = require('../../../model/article/getArticlePathById')
 const fs = require('fs')
 module.exports = async (ctx) => {
     if (ctx.request.query.ids) {

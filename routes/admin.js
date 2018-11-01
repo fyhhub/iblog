@@ -19,6 +19,12 @@ const changeArticleStatus = require('./admin/article/changeArticleStatus')
 const userInfo = require('./admin/Info/userInfo')
 const setUserInfo = require('./admin/Info/setUserInfo')
 const uploadAvatar = require('./admin/Info/uploadAvatar')
+const tools = require('./admin/tools/tools')
+const toolAdd = require('./admin/tools/toolAdd')
+const toolAddPost = require('./admin/tools/toolAddPost')
+const toolDelete = require('./admin/tools/toolDelete')
+const toolUpdate = require('./admin/tools/toolUpdate')
+const toolUpdatePost = require('./admin/tools/toolUpdatePost')
 // get
 router.get('/admin',loginController)
 router.get('/admin/index',indexController)
@@ -33,6 +39,11 @@ router.get('/admin/readArticle',readArticle)
 router.get('/admin/delArticle',delArticle)
 router.get('/admin/articleCheck/changeStatus',changeArticleStatus)
 router.get('/admin/userInfo',userInfo)
+router.get('/admin/tools',tools)
+router.get('/admin/toolAdd',toolAdd)
+router.get('/admin/toolDelete',toolDelete)
+router.get('/admin/toolUpdate',toolUpdate)
+
 
 // post
 router.post('/admin/navUpdatePost',navUpdatePost)
@@ -42,6 +53,9 @@ router.post('/admin/articleAddPost',articleAddPost)
 router.post('/admin/file/uploadImg',uploadImg)
 router.post('/admin/file/uploadAvatar',uploadAvatar)
 router.post('/admin/setUserInfo',setUserInfo)
+router.post('/admin/toolAdd',toolAddPost)
+router.post('/admin/toolUpdate',toolUpdatePost)
+
 
 
 

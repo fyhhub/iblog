@@ -1,5 +1,5 @@
-const getArticlePathById = require('../../model/getArticlePathById')
-const getNavList = require('../../model/getNavList')
+const getArticlePathById = require('../../model/article/getArticlePathById')
+const getNavList = require('../../model/nav/getNavList')
 const fs = require('fs')
 module.exports = async (ctx) => {
     let url = await getArticlePathById(ctx.request.query.id)

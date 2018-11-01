@@ -1,0 +1,87 @@
+{{extend '../layout/adminLayout.html'}}
+{{block 'title'}}导航栏管理{{/block}}
+{{block 'content'}}
+<div>
+    <div class="row">
+        <div class="col-md-5">
+            <h1 class="page-header">工具箱管理</h1>
+            <h3>修改工具</h3>
+            <br>
+            <a href="/admin/toolAdd" class="btn btn-primary">添加</a>
+            <input
+                    class="form-control input-lg update-input"
+                    type="text"
+                    style="margin-top: 20px;margin-bottom: 20px;"
+                    placeholder="工具介绍"
+                    value="<%=tool? tool.tool_name : ''%>"
+            >
+            <input
+                    class="form-control input-lg update-url"
+                    type="text"
+                    style="margin-top: 20px;margin-bottom: 20px;"
+                    placeholder="地址"
+                    value="<%=tool? tool.tool_url : ''%>"
+            >
+            <button type="button" class="btn btn-primary center-block update" style="width: 100%;height: 50px;">
+                修改
+            </button>
+        </div>
+        <div class="col-md-7" style="margin-top: 65px;">
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <thead>
+                    <tr>
+                        <th><span class="glyphicon glyphicon-paperclip"></span> <span class="visible-lg">ID</span></th>
+                        <th><span class="glyphicon glyphicon-file"></span> <span class="visible-lg">名称</span></th>
+                        <th><span class="glyphicon glyphicon-link"></span><span class="visible-lg">路由</span></th>
+                        <th></th>
+                        <th><span class="glyphicon glyphicon-pencil"></span> <span class="visible-lg">操作</span>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <%for (var i = 0;i < toolsList.length;i++) {%>
+                        <tr>
+                            <td class="nav-id"><%=toolsList[i].tool_id%></td>
+                            <td><%=toolsList[i].tool_name%></td>
+                            <td><%=toolsList[i].tool_url%></td>
+                            <td></td>
+                            <td data-id="<%=toolsList[i].tool_id%>">
+                                <a href="javascript:void(0);" class="btn btn-primary del-btn">删除</a>
+                            </td>
+                        </tr>
+                    <%}%>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{{/block}}
+{{block 'footer'}}
+<script>
+    $('.del-btn').on('click', function () {
+        if (confirm('你确定要删除吗？')) {
+            getData('/admin/toolDelete', 'get', {tool_id: $(this).parent().attr('data-id')}, function (res) {
+                if (res.success) {
+                    alert(res.message)
+                    location.reload()
+                } else {
+                    alert(res.message)
+                }
+            })
+        }
+    })
+    $('.update').on('click', function () {
+        var tool_id = location.search.slice(location.search.indexOf('?') + 1).split('=')[1]
+        getData('/admin/toolUpdate', 'post', {tool_id: tool_id, tool_name: $('.update-input').val(), tool_url: $('.update-url').val()}, function (res) {
+            if (res.success) {
+                alert(res.message)
+                location.href = '/admin/tools'
+            }
+        })
+
+    })
+</script>
+{{/block}}
+

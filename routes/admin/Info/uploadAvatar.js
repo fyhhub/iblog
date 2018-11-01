@@ -1,6 +1,6 @@
 const path = require('path')
 const fs = require('fs')
-const updateInfoImage = require('../../../model/updateInfoImage')
+const updateInfoImage = require('../../../model/info/updateInfoImage')
 module.exports = async (ctx) => {
     const file = ctx.request.files.uploadAvatar
     let name = ctx.session.isAdmin.name

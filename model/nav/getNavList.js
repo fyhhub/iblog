@@ -1,4 +1,4 @@
-const p = require('../config/mysql')
+const p = require('../../config/mysql')
 const getNavList = async () => {
     let list = []
     await p.query(`select * from nav`)

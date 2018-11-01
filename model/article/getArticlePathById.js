@@ -1,4 +1,4 @@
-const p = require('../config/mysql')
+const p = require('../../config/mysql')
 const getArticlePathById = async (id) => {
     let url = {}
     await p.query(`select article_url, article_introduce_img from article where id = '${id}'`)

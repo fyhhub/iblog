@@ -503,17 +503,21 @@ h3.blogtitle {
     padding: 20px;
     overflow: hidden
 }
+.links ul li {
+    margin-top: 15px;
+    text-align: center;
+}
 
 .links ul a {
     line-height: 24px;
-    margin: 0 10px 0 0;
-    display: block;
-    float: left
+    /*display: block;*/
+    border-bottom: 1px solid #000;
+    font-size: 17px;
+}
+.links ul a:hover {
+    color: #ff4500;
 }
 
-.links ul a:hover {
-    text-decoration: underline
-}
 
 .weixin {
     background: #FFF;

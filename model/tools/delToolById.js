@@ -1,10 +1,10 @@
-const p = require('../config/mysql')
-const delArticleById = async (id) => {
+const p = require('../../config/mysql')
+const delToolById = async (tool_id) => {
     let resInfo = {
         success: false,
         message: ''
     }
-    await p.query(`delete from article where id = '${id}'`)
+    await p.query(`delete from tools where tool_id = '${tool_id}'`)
         .then((data) => {
             if (data.affectedRows > 0) {
                 resInfo.success = true
@@ -12,15 +12,15 @@ const delArticleById = async (id) => {
             }
             if (data.affectedRows == 0) {
                 resInfo.success = false
-                resInfo.message = '删除的文章不存在'
+                resInfo.message = '删除的工具不存在'
             }
         })
         .catch((err) => {
             console.log(err)
-            console.log('删除文章失败')
+            console.log('删除工具失败')
             resInfo.success = false
             resInfo.message = '删除失败'
         })
     return resInfo
 }
-module.exports = delArticleById
+module.exports = delToolById

@@ -1,4 +1,4 @@
-const p = require('../config/mysql')
+const p = require('../../config/mysql')
 const getArticleList = async () => {
     var list = []
     await p.query(`select * from article`)
