@@ -73,6 +73,9 @@
                 syncScrolling : "single",
                 path    : "/editor/lib/",
                 saveHTMLToTextarea : true,
+                imageUpload : true,
+                imageFormats: ["jpg","jpeg","gif","png","bmp","webp"],
+                imageUploadURL: "/admin/file/uploadArticleImg",
             })
             $('#sub').on('click', function () {
                 var content = $('textarea').val()

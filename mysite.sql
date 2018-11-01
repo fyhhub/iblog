@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80012
 File Encoding         : 65001
 
-Date: 2018-10-25 22:50:04
+Date: 2018-11-01 19:34:36
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -30,7 +30,7 @@ CREATE TABLE `admin` (
 -- ----------------------------
 -- Records of admin
 -- ----------------------------
-INSERT INTO `admin` VALUES ('1', 'admin', 'fanyihui', '2018-10-25  21:53:10');
+INSERT INTO `admin` VALUES ('1', 'admin', 'fanyihui', '2018-11-1  18:24:55');
 
 -- ----------------------------
 -- Table structure for article
@@ -77,6 +77,20 @@ CREATE TABLE `info` (
 INSERT INTO `info` VALUES ('admin', 'Fun范', 'web初学者', '1131153523@qq.com', 'QQ1131153523', '已入坑前端7个月，会经常分享自己学习笔记和心得，热心前端方向，爱看技术文章。', '/images/avatar/admin-avatar.jpg');
 
 -- ----------------------------
+-- Table structure for links
+-- ----------------------------
+DROP TABLE IF EXISTS `links`;
+CREATE TABLE `links` (
+  `link_id` varchar(50) DEFAULT NULL,
+  `link_name` varchar(50) DEFAULT NULL,
+  `link_url` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of links
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for nav
 -- ----------------------------
 DROP TABLE IF EXISTS `nav`;
@@ -94,6 +108,29 @@ INSERT INTO `nav` VALUES ('3', '学无止境', '/learn');
 INSERT INTO `nav` VALUES ('4', '生活', '/life');
 INSERT INTO `nav` VALUES ('5', '留言板', '/gbook');
 INSERT INTO `nav` VALUES ('1539776686423.9695', '关于我', '/about');
+
+-- ----------------------------
+-- Table structure for tools
+-- ----------------------------
+DROP TABLE IF EXISTS `tools`;
+CREATE TABLE `tools` (
+  `tool_id` varchar(30) NOT NULL,
+  `tool_name` varchar(50) DEFAULT NULL,
+  `tool_url` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`tool_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of tools
+-- ----------------------------
+INSERT INTO `tools` VALUES ('1', '前端文档工具', 'http://www.css88.com/nav/');
+INSERT INTO `tools` VALUES ('20f0939f4621', '一套绝佳的图标字体库和CSS框架', 'http://fontawesome.dashgame.com/');
+INSERT INTO `tools` VALUES ('39635176f48a', '30 秒就能理解的 JavaScript 代码片段', 'http://www.css88.com/30-seconds-of-code/#tomorrow');
+INSERT INTO `tools` VALUES ('59216621dd35', 'Animate.css', 'https://daneden.github.io/animate.css/');
+INSERT INTO `tools` VALUES ('655f3b8dbcff', 'ECMAscript 6入门', 'http://es6.ruanyifeng.com/');
+INSERT INTO `tools` VALUES ('7a1378d4c1de', 'https://developer.mozilla.org/zh-CN/docs/Web', 'https://developer.mozilla.org/zh-CN/docs/Web');
+INSERT INTO `tools` VALUES ('b9f0cbe8ce1c', 'CodePen', 'https://codepen.io/');
+INSERT INTO `tools` VALUES ('e85b2b14d028', '前端开发资源库', 'https://www.awesomes.cn/');
 
 -- ----------------------------
 -- Table structure for users
