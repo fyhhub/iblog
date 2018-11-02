@@ -154,6 +154,26 @@ article {
 .blog li {
     overflow: hidden;
 }
+.article-info {
+    width: 100%;
+    height: 40px;
+    background-color: #fff;
+    padding-left: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.article-info span {
+    display: inline-block;
+    line-height: 40px;
+}
+.article-info span + span {
+    margin-left: 30px;
+}
+.article-info span i {
+    margin-right: 10px;
+}
+
 
 h3.blogtitle {
     line-height: 30px;

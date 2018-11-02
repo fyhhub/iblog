@@ -1,7 +1,14 @@
 const getNavList = require('../../model/nav/getNavList')
-module.exports = async (ctx, next) => {
+const getArticleList = require('../../model/article/getArticleList')
+const fs = require('fs')
+module.exports = async (ctx) => {
     let navList = await getNavList()
-    await ctx.render('main/list', {
-        navList
+    let articleList = await getArticleList()
+    articleList = articleList.filter((item) => {
+        return fs.existsSync(item.article_url)
+    })
+    await ctx.render('main/learn.html', {
+        navList,
+        articleList
     })
 }
