@@ -33,18 +33,21 @@
 <article>
     <div class="blogs animated bounceInLeft">
         <%for(var i = 0;i < articleList.length;i++) {%>
-            <%if (articleList[i].article_check == 1) {%>
-                <li><span class="blogpic"><a href="/article?id=<%=articleList[i].id%>"><img src="<%=articleList[i].article_introduce_img%>"></a></span>
-                    <h3 class="blogtitle"><a href="/article?id=<%=articleList[i].id%>"><%=articleList[i].article_title%></a></h3>
-                    <div class="bloginfo">
-                        <p><%=articleList[i].article_introduce%>...</p>
-                    </div>
-                    <div class="autor"><span class="lm"><a href="/" title="<%=articleList[i].article_tags%>" target="_blank" class="classname"><%=articleList[i].article_tags%></a></span><span
-                            class="dtime"><%=articleList[i].article_time%></span><span class="viewnum">(<a href="/"><%=articleList[i].article_read%></a>)</span><span
-                            class="readmore"><a href="/article?id=<%=articleList[i].id%>">阅读原文</a></span></div>
-                </li>
-            <%}else{%>
-            <%}%>
+        <%if (articleList[i].article_check == 1) {%>
+        <li><span class="blogpic"><a href="/article?id=<%=articleList[i].id%>"><img
+                src="<%=articleList[i].article_introduce_img%>"></a></span>
+            <h3 class="blogtitle"><a href="/article?id=<%=articleList[i].id%>"><%=articleList[i].article_title%></a>
+            </h3>
+            <div class="bloginfo">
+                <p><%=articleList[i].article_introduce%>...</p>
+            </div>
+            <div class="autor"><span class="lm"><a href="/tag/<%=articleList[i].article_tags%>" title="<%=articleList[i].article_tags%>"
+                                                   class="classname"><%=articleList[i].article_tags%></a></span><span
+                    class="dtime"><%=articleList[i].article_time%></span><span class="viewnum">(<a href="/"><%=articleList[i].article_read%></a>)</span><span
+                    class="readmore"><a href="/article?id=<%=articleList[i].id%>">阅读原文</a></span></div>
+        </li>
+        <%}else{%>
+        <%}%>
         <%}%>
     </div>
     {{include '../layout/sidebar.html'}}
@@ -67,6 +70,6 @@
 {{/block}}
 
 {{block 'footer'}}
-    <script src="/js/common.js"></script>
-    <script src="/js/index.js"></script>
+<script src="/js/common.js"></script>
+<script src="/js/index.js"></script>
 {{/block}}

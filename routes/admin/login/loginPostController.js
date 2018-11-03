@@ -1,6 +1,7 @@
 const p = require('../../../config/mysql')
 const mysql = require('mysql')
 const xss = require('xss')
+const md5 = require('blueimp-md5')
 const resInfo = {
     valid: false,
     message: ''
@@ -22,7 +23,8 @@ module.exports = async (ctx) => {
             resInfo.valid = true
             isAdmin.name = manager_name
         }
-    }).catch((err) => {
+    })
+        .catch((err) => {
         ctx.throw(err)
     })
     await p.query(`update admin set manager_login_time = ${mysql.escape(date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + '  ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds())} where manager_name = ${mysql.escape(username)}`)

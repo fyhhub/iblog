@@ -57,12 +57,16 @@ render(app, {
 
 
 // routes
-//session拦截
+let a = []
 app.use(async (ctx, next) => {
     let ip = ctx.request.get("X-Real-IP") || ctx.request.get("X-Forwarded-For") || ctx.request.ip
-    console.log('ip ' + ip + '  访问了  ' + ctx.originalUrl)
+    console.log('ip ' + ip + '  访问了  ' + ctx.originalUrl + '  访问时间: ' + new Date())
+    a.push(ip)
+    a = [...new Set(a)]
+    ctx.request.peopleNums = a.length
     await next()
 })
+//session拦截
 app.use(async (ctx, next) => {
     const allowpage = ['/admin']
     if (allowpage.includes(ctx.originalUrl)) {

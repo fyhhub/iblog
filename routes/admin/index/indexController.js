@@ -17,12 +17,13 @@ module.exports = async (ctx) => {
         .catch((err) => {
             ctx.throw(err)
         })
+    console.log(ctx.request.peopleNums)
     if (OK) {
         ctx.render('admin/index.html', {
             adminInfo: {
                 manager_name: manager_name,
                 manager_login_time :manager_login_time,
-                manager_ip: ctx.host
+                peopleNums: ctx.request.peopleNums
             }
         })
     } else {

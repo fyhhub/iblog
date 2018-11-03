@@ -3,8 +3,10 @@
 {{block 'content'}}
 
 <article>
-    <div class="blogs animated bounceInLeft">
-        <div id="SOHUCS"  ></div>
+    <h1 class="t_nav"><span>像“草根”一样，紧贴着地面，低调的存在，冬去春来，枯荣无恙。</span><a href="/" class="n1">网站首页</a><a href="/about" class="n2">留言板</a>
+    </h1>
+    <div class="blogs animated bounceInLeft" style="width:100%;min-height:1000px;">
+        <div id="SOHUCS"  style="box-sizing: border-box;padding: 30px"></div>
         <script type="text/javascript">
             (function(){
                 var appid = 'cytTIMlXm';
@@ -14,7 +16,6 @@
                     window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("http://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })();
         </script>
     </div>
-    {{include '../layout/sidebar.html'}}
 </article>
 <div class="toTop"
      style="width: 60px;
@@ -30,10 +31,4 @@
 ">
     返回顶部
 </div>
-
-{{/block}}
-
-{{block 'footer'}}
-<script src="/js/common.js"></script>
-<script src="/js/index.js"></script>
 {{/block}}

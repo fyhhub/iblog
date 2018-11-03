@@ -1,28 +1,25 @@
-﻿{{extend '../layout/indexLayout.html'}}
+{{extend '../layout/indexLayout.html'}}
 {{block 'title'}}博客首页{{/block}}
 {{block 'content'}}
 
 <article>
-    <h1 class="t_nav"><span>不要轻易放弃。学习成长的路上，我们长路漫漫，只因学无止境。 </span><a href="/" class="n1">网站首页</a><a href="/learn" class="n2">学无止境</a>
+    <h1 class="t_nav"><span>不要轻易放弃。学习成长的路上，我们长路漫漫，只因学无止境。 </span><a href="/" class="n1">网站首页</a><a href="javascript:void(0);" class="n2">标签页</a>
     </h1>
     <div class="blogs">
         <%for(var i = 0;i < articleList.length;i++) {%>
-            <%if (articleList[i].article_check == 1) {%>
-            <li><span class="blogpic"><a href="/article?id=<%=articleList[i].id%>"><img src="<%=articleList[i].article_introduce_img%>"></a></span>
-                <h3 class="blogtitle"><a href="/article?id=<%=articleList[i].id%>"><%=articleList[i].article_title%></a></h3>
-                <div class="bloginfo">
-                    <p><%=articleList[i].article_introduce%>...</p>
-                </div>
-                <div class="autor"><span class="lm"><a href="/" title="<%=articleList[i].article_tags%>" target="_blank" class="classname"><%=articleList[i].article_tags%></a></span><span
-                        class="dtime"><%=articleList[i].article_time%></span><span class="viewnum">(<a href="/"><%=articleList[i].article_read%></a>)</span><span
-                        class="readmore"><a href="/article?id=<%=articleList[i].id%>">阅读原文</a></span></div>
-            </li>
-            <%}else{%>
-            <%}%>
+        <%if (articleList[i].article_check == 1) {%>
+        <li><span class="blogpic"><a href="/article?id=<%=articleList[i].id%>"><img src="<%=articleList[i].article_introduce_img%>"></a></span>
+            <h3 class="blogtitle"><a href="/article?id=<%=articleList[i].id%>"><%=articleList[i].article_title%></a></h3>
+            <div class="bloginfo">
+                <p><%=articleList[i].article_introduce%>...</p>
+            </div>
+            <div class="autor"><span class="lm"><a href="/" title="<%=articleList[i].article_tags%>" target="_blank" class="classname"><%=articleList[i].article_tags%></a></span><span
+                    class="dtime"><%=articleList[i].article_time%></span><span class="viewnum">(<a href="/"><%=articleList[i].article_read%></a>)</span><span
+                    class="readmore"><a href="/article?id=<%=articleList[i].id%>">阅读原文</a></span></div>
+        </li>
+        <%}else{%>
         <%}%>
-        <div class="pagelist"><a title="Total record">&nbsp;<b>45</b> </a>&nbsp;&nbsp;&nbsp;<b>1</b>&nbsp;<a
-                href="/download/index_2.html">2</a>&nbsp;<a href="/download/index_2.html">下一页</a>&nbsp;<a
-                href="/download/index_2.html">尾页</a></div>
+        <%}%>
     </div>
     <div class="sidebar">
         <div class="lmnav">
