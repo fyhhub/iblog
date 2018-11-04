@@ -9,16 +9,6 @@
         padding: 10px 10px;
     }
 
-    .picshow li i {
-        overflow: hidden;
-        display: block;
-        height: 400px;
-    }
-
-    .picshow .font {
-        display: none
-    }
-
     .text img {
         width: 100%
     }
@@ -59,17 +49,12 @@
     .sidebar {
         width: 33%
     }
-
-    .picshow li i {
-        overflow: hidden;
-        display: block;
+    .picshow {
         height: 300px;
     }
-
-    .picshow .font {
-        display: none
+    .picshow .banner-right .banner-text{
+        font-size: 13px;
     }
-
     .text img {
         width: 100%
     }
@@ -139,15 +124,19 @@
         background: rgba(1, 1, 1, 0)
     }
 
-    /* ????????????��???? */
-    .picshow li i {
-        overflow: hidden;
-        display: block;
+    .picshow {
         height: 200px;
+        width: 100%;
+        float: none;
     }
+    .picshow .banner-right {
+        background-size: 90% 70%;
+    }
+    .picshow .banner-right .banner-text{
+        font-size: 12px;
+    }
+    .picshow .swiper-container {
 
-    .picshow .font, .litle span {
-        display: none
     }
 
     .text img {
@@ -257,6 +246,15 @@
     .navicon, .navicon:before, .navicon:after {
         background: #000
     }
+    .picshow .banner-right {
+        display: none;
+    }
+    .picshow {
+        height: 250px;
+    }
+    .picshow .swiper-container {
+        width: 100%;
+    }
 
     #mnav h2 #mnav h2.open .navicon {
         background: rgba(1, 1, 1, 0)
@@ -360,15 +358,14 @@
         background: rgba(1, 1, 1, 0)
     }
 
-    /* ????????????��???? */
-    .picshow li i {
-        overflow: hidden;
-        display: block;
-        height: 100px;
+    .picshow .banner-right {
+        display: none;
     }
-
-    .picshow .font {
-        display: none
+    .picshow {
+        height: 200px;
+    }
+    .picshow .swiper-container {
+        width: 100%;
     }
 
     .text img {

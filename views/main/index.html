@@ -1,37 +1,28 @@
 ﻿{{extend '../layout/indexLayout.html'}}
-{{block 'title'}}博客首页{{/block}}
+{{block 'title'}}Fun范的个人博客{{/block}}
+
+{{block 'style'}}
+<link href="https://cdn.bootcss.com/Swiper/4.4.1/css/swiper.min.css" rel="stylesheet">
+{{/block}}
 {{block 'content'}}
-<div class="picshow">
-    <ul>
-        <li><a href="/"><i><img src="images/b01.jpg"></i>
-            <div class="font">
-                <h3>Fun范的个人博客</h3>
-            </div>
-        </a></li>
-        <li><a href="/"><i><img src="images/b02.jpg"></i>
-            <div class="font">
-                <h3>Fun范的个人博客</h3>
-            </div>
-        </a></li>
-        <li><a href="/"><i><img src="images/b03.jpg"></i>
-            <div class="font">
-                <h3>Fun范的个人博客</h3>
-            </div>
-        </a></li>
-        <li><a href="/"><i><img src="images/b04.jpg"></i>
-            <div class="font">
-                <h3>Fun范的个人博客</h3>
-            </div>
-        </a></li>
-        <li><a href="/"><i><img src="images/b05.jpg"></i>
-            <div class="font">
-                <h3>Fun范的个人博客</h3>
-            </div>
-        </a></li>
-    </ul>
-</div>
 <article>
-    <div class="blogs animated bounceInLeft">
+    <div class="picshow">
+        <div class="swiper-container swiper-container-vertical">
+            <div class="swiper-wrapper" style="transition-duration: 0ms; transform: translate3d(0px, -300px, 0px);">
+                <div class="swiper-slide swiper-slide-prev" style="height: 300px;"><p></p></div>
+                <div class="swiper-slide ani-slide swiper-slide-active" style="height: 300px;"><p></p></div>
+                <div class="swiper-slide swiper-slide-next" style="height: 300px;"><p></p></div>
+            </div>
+            <div class="swiper-pagination swiper-pagination-bullets"><span class="swiper-pagination-bullet"></span><span
+                    class="swiper-pagination-bullet swiper-pagination-bullet-active"></span><span
+                    class="swiper-pagination-bullet"></span></div>
+            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+        </div>
+        <div class="banner-right">
+            <p class="banner-text">网站完善中~~~~</p>
+        </div>
+    </div>
+    <div class="blogs animated fadeInLeft">
         <%for(var i = 0;i < articleList.length;i++) {%>
         <%if (articleList[i].article_check == 1) {%>
         <li><span class="blogpic"><a href="/article?id=<%=articleList[i].id%>"><img
@@ -41,10 +32,13 @@
             <div class="bloginfo">
                 <p><%=articleList[i].article_introduce%>...</p>
             </div>
-            <div class="autor"><span class="lm"><a href="/tag/<%=articleList[i].article_tags%>" title="<%=articleList[i].article_tags%>"
-                                                   class="classname"><%=articleList[i].article_tags%></a></span><span
-                    class="dtime"><%=articleList[i].article_time%></span><span class="viewnum">(<a href="/"><%=articleList[i].article_read%></a>)</span><span
-                    class="readmore"><a href="/article?id=<%=articleList[i].id%>">阅读原文</a></span></div>
+            <div class="autor"><i class="fa fa-tags "></i>&nbsp;<a href="/tag/<%=articleList[i].article_tags%>"
+                                                                   title="<%=articleList[i].article_tags%>"
+                                                                   class="classname"><%=articleList[i].article_tags%></a></span>
+                <span class="dtime"><i class="fa fa-clock-o "></i>&nbsp;<%=articleList[i].article_time%></span>
+                <span class="viewnum"><i class="fa fa-eye "></i>&nbsp;(<a href="/"><%=articleList[i].article_read%></a>)</span>
+                <span class="readmore"><a href="/article?id=<%=articleList[i].id%>">阅读原文</a></span>
+            </div>
         </li>
         <%}else{%>
         <%}%>
@@ -70,6 +64,44 @@
 {{/block}}
 
 {{block 'footer'}}
+<script src="https://cdn.bootcss.com/Swiper/4.4.1/js/swiper.min.js"></script>
 <script src="/js/common.js"></script>
 <script src="/js/index.js"></script>
+<script>
+
+    var swiper = new Swiper('.swiper-container', {
+        effect: 'cube',
+        autoplay: {
+            delay: 1000,
+            stopOnLastSlide: false,
+            disableOnInteraction: true,
+        },
+        direction: 'vertical',
+        followFinger: false,
+        speed: 800,
+        mousewheel: true,
+        pagination: {
+            el: '.swiper-pagination',
+        },
+        on: {
+            init: function (swiper) {
+                slide = this.slides.eq(0);
+                slide.addClass('ani-slide');
+            },
+            transitionStart: function () {
+                for (i = 0; i < this.slides.length; i++) {
+                    slide = this.slides.eq(i);
+                    slide.removeClass('ani-slide');
+                }
+            },
+            transitionEnd: function () {
+                slide = this.slides.eq(this.activeIndex);
+                slide.addClass('ani-slide');
+
+            },
+        }
+    });
+
+
+</script>
 {{/block}}
